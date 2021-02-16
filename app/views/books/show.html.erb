@@ -1,0 +1,33 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+  <%= render 'books/list', book: @book, user: @user %>
+  </div>
+<div class="col-md-8 offset-md-1">
+<h3>Books</h3>
+<table class="Books">
+
+<h3>Book detail</h3>
+<table class="Books">
+
+
+  <tr>
+    <td><%= link_to attachment_image_tag(@user, :profile_image, :fill, 60, 60, fallback: "no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg"), user_path(@user)%>
+    <%= link_to @user.name, user_path(@user)%>
+    </td>
+    <td><%= link_to @booker.title, user_path(@user) %></td>
+    <td>
+      <%= link_to book_path(@booker) do %>
+      <%= @booker.body %>
+      <% end %>
+      </td>
+      <% if @user.id == current_user.id %>
+    <td><%= link_to 'Edit', edit_book_path, class:"btn btn-success"%></td>
+    <td><%= link_to 'Destroy',book_path(@booker.id), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除してもよろしいですか?" }%></td>
+    <% end %>
+     </tr>
+
+</table>
+</div>
+</div>
+</div>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/df04e4fdbb.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="d-flex flex-column vh-100">
+    <header shadow-sm="">
+      <div class="p-1 mb-2 bg-dark text-white">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <h5>
+          <%= link_to "Bookers",root_path, class: 'nav-link text-white' %></h5>
+          <!--<a class="navbar-brand p-3"></a>-->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% flash.each do |message_type, message| %>
+          <%= message %>
+        <% end %>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Home', user_path(current_user), class: 'nav-link text-white fas fa-home'%>
+
+          </li>
+           <li class="nav-item">
+            <%= link_to 'Users',users_path, class: 'nav-link text-white fas fa-users' %>
+
+          </li>
+           <li class="nav-item">
+            <%= link_to 'Books',books_path, class: 'nav-link text-white fas fa-book-open'%>
+
+          </li>
+          <li class="nav-item">
+            <%= link_to 'logout',destroy_user_session_path, method: :delete, class: 'nav-link text-white fas fa-sign-out-alt'%>
+
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Home',root_path, class: 'nav-link text-white fas fa-home' %>
+
+          </li>
+          <li class="nav-item">
+            <%= link_to 'About',home_about_path, class: 'nav-link text-white fas fa-link' %>
+
+          </li>
+          <li class="nav-item">
+            <%= link_to 'sign up',new_user_registration_path, class: 'nav-link text-white fas fa-user-plus'%>
+
+          </li>
+          <li class="nav-item">
+            <%= link_to 'login', new_user_session_path, class: 'nav-link text-white fas fa-sign-in-alt'%>
+
+          </li>
+        <% end %>
+       </ul>
+       </div>
+      </div>
+      </nav>
+     </div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 offset-md-5">
+          <footer>CopyRight Infratop.inc</footer>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
