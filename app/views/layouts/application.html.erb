@@ -22,9 +22,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-        <% flash.each do |message_type, message| %>
-          <%= message %>
-        <% end %>
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to 'Home', user_path(current_user), class: 'nav-link text-white fas fa-home'%>
@@ -66,6 +63,9 @@
       </nav>
      </div>
     </header>
+    <% flash.each do |message_type, message| %>
+          <%= message %>
+        <% end %>
     <main>
       <%= yield %>
     </main>
