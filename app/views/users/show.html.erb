@@ -12,6 +12,10 @@
     <th>introduction</th>
     <td><%= @user.introduction%></td>
   </tr>
+  <tr>
+    <td><%= "フォロー数: #{@user.follower.count}" %></td>
+    <td><%= "フォロワー数: #{@user.followed.count}" %></td>
+  </tr>
 </table>
 <%= link_to edit_user_path(@user.id) do %>
 <%= button_tag '<i class="btn btn-outline-secondary btn-block fas fa-user-cog"></i>'.html_safe, :type => "submit",

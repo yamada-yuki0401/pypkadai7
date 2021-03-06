@@ -10,8 +10,8 @@
   </div>
 <% end %>
 <%= form_with model:@book, local:true do |f| %>
-<p>Title</p>
-<%= f.text_field :title %>
+<p>Name</p>
+<%= f.text_field :name %>
 <p>Opinion</p>
 <%= f.text_area :body %>
 <%= f.submit 'Update Book' ,class:"btn btn-success" %>

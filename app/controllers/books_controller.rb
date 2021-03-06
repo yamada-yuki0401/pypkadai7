@@ -14,6 +14,7 @@ class BooksController < ApplicationController
  end
 
   def index
+    @booker = Book.find_by(params[:book_id])
     @user = current_user
     @books = Book.all
     @book = Book.new

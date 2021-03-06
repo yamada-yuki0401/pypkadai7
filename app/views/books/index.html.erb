@@ -33,6 +33,10 @@
       <%= book.title %>
       <% end %>
     </td>
+  <div id="book_<%= book.id %>">
+    <%= render "books/index", book: @booker%>
+  </div>
+
     <td><%= book.body %></td>
   </tr>
    <% end %>
